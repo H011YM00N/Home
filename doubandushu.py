@@ -33,7 +33,6 @@ def get_book_comment(data_base):
         response = urllib2.urlopen(request)
         content = response.read().decode('utf-8')
         soup = BeautifulSoup(content, 'lxml')
-        print soup.title.get_text()
         items = soup.find('div', id='wrapper', class_='book-content').find_all('div', typeof='v:Review')
         for item in items:
             title = item.find('a', class_='title-link').get_text().strip()
