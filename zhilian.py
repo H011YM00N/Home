@@ -134,7 +134,6 @@ class MOORE:
             self.get_job_item(page_index)
 
 
-
 if __name__ == '__main__':
     select_mode = raw_input()
     if select_mode == 'zhilian':
