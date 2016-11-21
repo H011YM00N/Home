@@ -5,6 +5,7 @@ import requests
 import json
 import sqlite3
 import time
+import urllib
 
 
 data_base = time.strftime('%Y-%m-%d-%H%M%S', time.localtime()) + '-dataoke.db'
@@ -72,6 +73,16 @@ for item in items:
 #    print 'Quan_id:' + item['Quan_id']
 #    print 'Quan_condition:' + item['Quan_condition']
 #    print 'Quan_surplus:' + item['Quan_surplus']
+    print 'Begin to download the picutre!!'
+    if '/' in item['D_title']:
+        picture_name = item['D_title'].replace('/', '_')
+    elif '*' in item['D_title']:
+        picture_name = item['D_title'].replace('*', '_')
+    else:
+        picture_name = item['D_title']
+    location = 'C:\\Python27\\pictures_taoke\\' + picture_name + '.jpg'
+    print location
+    urllib.urlretrieve(item['Pic'], location)
     print 'Begin to write data base!!'
     conn.execute('''INSERT INTO DATAOKE(CID, D_TITLE, TITLE, DSR, COMMISSION_QUEQIAO, QUAN_RECEIVE, QUAN_PRICE,
         QUAN_TIME, JIHUA_LINK, PRICE, JIHUA_SHENHE, INTRODUCE, SALES_NUM, QUAN_LINK, ISTMALL, GOODSID,
