@@ -44,7 +44,10 @@ def get_book_comment(data_base):
             content_soup = BeautifulSoup(content_response.read().decode('utf-8'),'lxml')
             content = content_soup.find('div', id='content').find('div',class_='main-bd').find('div',class_='clearfix').get_text()
             book_id += 1
-            data_base.execute("INSERT INTO SHUPING(ID, TITLE, AUTHOR, BOOK, COMMENT) VALUES (%d, \"%s\", \"%s\", \"%s\", \"%s\")" % (book_id, title, author, book, content))
+            data_base.execute("INSERT INTO SHUPING(ID, TITLE, AUTHOR, BOOK, COMMENT) VALUES "
+                              "(%d, \"%s\", \"%s\", \"%s\", \"%s\")"
+                              % (book_id, title, author, book, content)
+                              )
             data_base.commit()
     data_base.close()
     print 'Successfully stored the book comment in doubandushu.db'
