@@ -12,7 +12,7 @@ data_base = time.strftime('%Y-%m-%d-%H%M%S', time.localtime()) + '-dataoke.db'
 conn = sqlite3.connect(data_base)
 
 conn.execute('''CREATE TABLE DATAOKE
-        (CID            TEXT PREMARY KEY     NOT NULL,
+        (CID            TEXT PRIMARY KEY     NOT NULL,
         D_TITLE         TEXT    NOT NULL,
         TITLE           TEXT NOT NULL,
         DSR             TEXT NOT NULL,
@@ -103,8 +103,3 @@ for item in items:
 
 
 conn.close()
-
-
-
-
-
